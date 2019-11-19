@@ -47,10 +47,11 @@ set(PROJECT_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 set(CMAKE_MODULE_PATH ${PROJECT_MODULE_PATH})
 
 find_package(Boost REQUIRED)
-find_package(Eigen REQUIRED)
+# find_package(Eigen REQUIRED)
 find_package(OpenCV REQUIRED)
 
 include_directories(${Boost_INCLUDE_DIRS})
+set(Eigen_INCLUDE_DIRS "/opt/eigen3/include/eigen3/")
 include_directories(${Eigen_INCLUDE_DIRS})
 include_directories(${OpenCV_INCLUDE_DIRS})
 
@@ -143,7 +144,7 @@ set(sources
     )
 
 
-add_library(${PROJECT_NAME} ${dbot_headers}
+add_library(${PROJECT_NAME} STATIC  ${dbot_headers}
                             ${headers}
                             ${sources})
 
